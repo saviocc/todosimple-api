@@ -1,5 +1,6 @@
 package com.saviocavalcante.todosimple.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class TaskService {
 
         return task.orElseThrow(() -> new RuntimeException(
                 "Tarefa não encontrado! id: " + id));
+    }
+
+    public List<Task> findAllByYserId(Long userId) {
+        List<Task> tasks = taskRepository.findByUser_Id(userId);
+        return tasks;
     }
 
     @Transactional
