@@ -50,6 +50,7 @@ public class UserController {
     @Validated(UpdateUser.class)
     public ResponseEntity<Void> create(@Valid @RequestBody User obj, @PathVariable Long id) {
         userService.findById(id);
+        obj.setId(id);
         userService.update(obj);
 
         return ResponseEntity.noContent().build();

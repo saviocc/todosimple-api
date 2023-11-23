@@ -60,6 +60,7 @@ public class TaskController {
     @Validated
     public ResponseEntity<Void> create(@Valid @RequestBody Task obj, @PathVariable Long id) {
         taskService.findById(id);
+        obj.setId(id);
         taskService.update(obj);
         return ResponseEntity.noContent().build();
     }
